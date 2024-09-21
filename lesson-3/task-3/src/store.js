@@ -3,6 +3,14 @@ import languageReducer from './language.reducer';
 import cartReducer from './cart.reducer';
 import usersReducer from './user.reducer';
 
+export const initState = {
+  language: 'en',
+  user: null,
+  cart: {
+    products: [],
+  },
+};
+
 const appReducer = combineReducers({
   language: languageReducer,
   user: usersReducer,

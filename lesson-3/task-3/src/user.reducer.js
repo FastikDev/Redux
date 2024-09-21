@@ -1,10 +1,7 @@
 import { ADD_USER, DELETE_USER } from './user.actions';
+import { initState } from './store';
 
-const initState = {
-  user: null,
-};
-
-const usersReducer = (state = initState, action) => {
+const usersReducer = (state = initState.user, action) => {
   switch (action.type) {
     case ADD_USER:
       return action.payload.userData;

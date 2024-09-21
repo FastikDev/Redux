@@ -1,10 +1,7 @@
 import { ADD_PRODUCT, DELETE_PRODUCT } from './cart.actions';
+import { initState } from './store';
 
-const initState = {
-  products: [],
-};
-
-const cartReducer = (state = initState, action) => {
+const cartReducer = (state = initState.cart, action) => {
   switch (action.type) {
     case ADD_PRODUCT:
       return {
