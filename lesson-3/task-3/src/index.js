@@ -1,5 +1,5 @@
 import store from './store';
-import { setLanguage } from './language.action';
+import { setLanguage } from './language.actions';
 import { setUser, removeUser } from './user.actions';
 import { addProduct, removeProduct } from './cart.actions';
 

@@ -1,4 +1,4 @@
-import { SET_LANGUAGE } from './language.action';
+import { SET_LANGUAGE } from './language.actions';
 
 const initState = {
   language: 'en',
