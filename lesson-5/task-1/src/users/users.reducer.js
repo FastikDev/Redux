@@ -21,7 +21,7 @@ const PREV_PAGE = 'PREV_PAGE';
 const NEXT_PAGE = 'NEXT_PAGE';
 
 const userReducer = (state = initialState, action) => {
-  const totalPages = Math.floor(state.usersList.length / 3);
+  const totalPages = Math.floor(state.users.usersList.length / 3);
 
   switch (action.type) {
     case PREV_PAGE:
