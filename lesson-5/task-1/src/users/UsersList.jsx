@@ -1,19 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Pagination from './Pagination';
 import User from './User';
-import PropTypes from 'prop-types';
 import * as usersActions from './users.actions';
-import { currentPageSelector, usersListSelector } from './usesrs.selector';
+import { usersListSelector, currentPageSelector } from './usesrs.selector';
 
-const UsersList = ({ users, currentPage, itemsPerPage, goPrev, goNext }) => {
-  const displayUser = users.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+const ITEMS_PER_PAGE = 3;
+const UsersList = ({ users, currentPage, goPrev, goNext }) => {
+  const displayUser = users.slice(currentPage * ITEMS_PER_PAGE, (currentPage + 1) * ITEMS_PER_PAGE);
 
   return (
     <ul className="users">
       <Pagination
         currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
+        itemsPerPage={ITEMS_PER_PAGE}
         totalItems={users.length}
         goPrev={goPrev}
         goNext={goNext}
@@ -25,17 +26,16 @@ const UsersList = ({ users, currentPage, itemsPerPage, goPrev, goNext }) => {
   );
 };
 
-UsersList.PropTypes = {
-    users: PropTypes.arrayOf(PropTypes.share()).isRequired,
-    currentPage: PropTypes.string.isRequired,
-    goPrev: PropTypes.func.isRequired,
-    goNext: PropTypes.func.isRequired,
-}
+UsersList.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  currentPage: PropTypes.number.isRequired,
+  goPrev: PropTypes.func.isRequired,
+  goNext: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   users: usersListSelector(state),
   currentPage: currentPageSelector(state),
-  itemsPerPage: 3,
 });
 
 const mapDispatchToProps = {

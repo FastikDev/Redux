@@ -4,8 +4,8 @@ const Pagination = ({ goPrev, goNext, currentPage, totalItems, itemsPerPage }) =
   const isPrevPageAvailable = currentPage > 0;
   const isNextPageAvailable = (currentPage + 1) * itemsPerPage < totalItems;
 
-  const prevButtonText = isPrevPageAvailable ? '<' : '';
-  const nextButtonText = isNextPageAvailable ? '>' : '';
+  const prevButtonText = isPrevPageAvailable ? '←' : '';
+  const nextButtonText = isNextPageAvailable ? '→' : '';
 
   return (
     <div className="pagination">
