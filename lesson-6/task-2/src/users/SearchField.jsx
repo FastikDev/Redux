@@ -25,7 +25,7 @@ class SearchField extends Component {
           value={this.state.userName}
           onChange={this.onChange}
         />
-        <button className="name-form btn" onClick={this.handleUserSearch}>
+        <button className="name-form__btn" onClick={this.handleUserSearch}>
           Show
         </button>
       </div>

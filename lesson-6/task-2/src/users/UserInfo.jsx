@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { isFetchingSelector, userDataSelector } from './users.selectors';
+import { isFetchingSelector, userDataSelector } from './users.selectors.js';
 import Spinner from './Spinner.jsx';
 
 const UserInfo = ({ userData, isFetching }) => {
