@@ -1,11 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { thunk } from 'redux-thunk';
 import weatherReducer from './weather/weather.reducer';
 
-const reducer = combineReducers({
-    weather: weatherReducer,
+const rootReducer = combineReducers({
+  weather: weatherReducer,
 });
 
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
