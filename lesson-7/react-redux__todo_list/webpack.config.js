@@ -5,7 +5,20 @@ const webpack = require('webpack');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
-  const config = {
+
+  const plugins = [
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ];
+
+  if (isProduction) {
+    plugins.push(new MiniCssExtractPlugin({ filename: '[name].css' }));
+  }
+
+  return {
     entry: './src/index.jsx',
     output: {
       filename: 'bundle.js',
@@ -30,13 +43,7 @@ module.exports = (_, argv) => {
     resolve: {
       extensions: ['.js', '.jsx'],
     },
-    plugins: [
-      new webpack.ProgressPlugin(),
-      new CleanWebpackPlugin(),
-      new HtmlWebpackPlugin({
-        template: './src/index.html',
-      }),
-    ],
+    plugins,
     devServer: {
       historyApiFallback: true,
       open: true,
@@ -44,18 +51,4 @@ module.exports = (_, argv) => {
       port: 8080,
     },
   };
-
-  if (isProduction) {
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  }
-
-  if (isProduction) {
-    config.plugins.push(
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-      }),
-    );
-  }
-
-  return config;
 };
